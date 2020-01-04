@@ -11,7 +11,8 @@ The frontend has a simple 'Hello' component that established state, fetches the 
 ## Extra Features
 
 Branches with extra functionality:
-[Crud](https://github.com/kpowley/MERN-Boilerplate/tree/crud) - Create, Read, Update and Delete data from the database via API
+
+1. [Crud](https://github.com/kpowley/MERN-Boilerplate/tree/crud) - Create, Read, Update and Delete data from the database via API
 
 ## Starting Dev Server
 
