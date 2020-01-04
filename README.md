@@ -8,6 +8,11 @@ The boilerplate includes a backend API under the route localhost:500/api
 
 The frontend has a simple 'Hello' component that established state, fetches the backend API and renders the headline.
 
+## Extra Features
+
+Branches with extra functionality:
+[Crud](https://github.com/kpowley/MERN-Boilerplate/tree/crud) - Create, Read, Update and Delete data from the database via API
+
 ## Starting Dev Server
 
 Naviate to the project folder in the terminal and run `npm run dev`
