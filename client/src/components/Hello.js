@@ -15,7 +15,7 @@ const Hello = () => {
       console.error('Error:', error);
     });
 
-  // Render
+  // Output
   return <h1>{introText}</h1>;
 };
 
