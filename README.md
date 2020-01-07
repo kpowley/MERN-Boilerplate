@@ -19,6 +19,12 @@ Mongoose Example template data model
 - Update an item by ID
 - Delete an item by ID
 
+## API React Components
+
+5 React components setup to use the API routes on the front end.
+
+Each is barebones with no additional packages or dependancies.
+
 ## Starting Dev Server
 
 Naviate to the project folder in the terminal and run `npm run dev`

@@ -1,6 +1,9 @@
+// Packages
 import React, { Component } from 'react';
 
+// Setup component
 export default class GetOne extends Component {
+  // Declare state
   state = {
     searchId: '',
     _id: '',
@@ -10,6 +13,7 @@ export default class GetOne extends Component {
     field4: ''
   };
 
+  // Get one item API call
   getOne(id) {
     fetch(`/api/crud/${id}`)
       .then(response => response.json())
@@ -24,11 +28,13 @@ export default class GetOne extends Component {
       });
   }
 
+  // Input state update handler
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     return (
       <div>
+        <h2>Read: Get One</h2>
         <input
           type='text'
           name='searchId'
@@ -40,6 +46,7 @@ export default class GetOne extends Component {
           Get One
         </button>
         <p>{this.state.field1}</p>
+        <hr />
       </div>
     );
   }
