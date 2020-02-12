@@ -6,7 +6,7 @@ const Hello = () => {
   const [introText, setIntroText] = useState('Loading...');
 
   // Demo API call to backend
-  fetch('/api')
+  fetch('/api/crud/test')
     .then(res => res.json())
     .then(data => {
       setIntroText(data.text);
