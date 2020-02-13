@@ -11,7 +11,11 @@ app.use(express.json({ extended: false }));
 
 // Define routes
 app.use(express.static('client/build'));
-app.use('/api', require('./routes/api'));
+app.use('/api/crud', require('./routes/crud/crud'));
+app.use('/api/register', require('./routes/auth/register'));
+app.use('/api/auth', require('./routes/auth/auth'));
+app.use('/api/protected', require('./routes/auth/protected'));
+app.use('/api/passwordreset', require('./routes/auth/reset'));
 
 // Listening port
 const PORT = process.env.PORT || 5000;

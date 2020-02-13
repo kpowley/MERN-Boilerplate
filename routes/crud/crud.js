@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 // Models
-const Example = require('../models/Example');
+const Example = require('../../models/Example');
 
 // @route:  GET /api
 // @desc:   Return plain text string
 // @access: Public
-router.get('/', (req, res) => {
+router.get('/test', (req, res) => {
   res.json({ text: 'Hello MERN' });
 });
 
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 //   	"field3": true
 //   }
 //
-router.post('/crud', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     // Get values from request body
     const { field1, field2, field3 } = req.body;
@@ -62,7 +62,7 @@ router.post('/crud', async (req, res) => {
 // URL:
 //   'http://localhost:5000/api/crud'
 //
-router.get('/crud', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     // Get all items in the database
     const exampleItem = await Example.find();
@@ -84,7 +84,7 @@ router.get('/crud', async (req, res) => {
 // URL:
 //   'http://localhost:5000/api/crud/5e0fd18c04798f3e29931e11'
 //
-router.get('/crud/:_id', async (req, res) => {
+router.get('/:_id', async (req, res) => {
   try {
     // Find item by ID from reqest URL paramter
     const exampleItem = await Example.findOne({
@@ -122,7 +122,7 @@ router.get('/crud/:_id', async (req, res) => {
 //   	"field3": true
 //   }
 //
-router.put('/crud/:_id', async (req, res) => {
+router.put('/:_id', async (req, res) => {
   try {
     // Get values from request body
     const { field1, field2, field3 } = req.body;
@@ -169,7 +169,7 @@ router.put('/crud/:_id', async (req, res) => {
 // URL:
 //   'http://localhost:5000/api/crud/5e0fd18c04798f3e29931e11'
 //
-router.delete('/crud/:_id', async (req, res) => {
+router.delete('/:_id', async (req, res) => {
   try {
     // Find item by ID from reqest URL paramter
     const exampleItem = await Example.findOne({

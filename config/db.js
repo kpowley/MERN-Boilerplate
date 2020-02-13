@@ -7,7 +7,8 @@ const connectDB = async () => {
     // replace 'mongodb://localhost/DBNameHere' with remote connection such as Atlas if desired
     await mongoose.connect('mongodb://localhost/DBNameHere', {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useFindAndModify: false
     });
     console.log('MongoDB Connected...');
   } catch (err) {
