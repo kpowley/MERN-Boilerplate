@@ -1,5 +1,6 @@
 // Packages
 import React, { Component } from 'react';
+import './register.styles.scss';
 
 // Setup component
 export default class Register extends Component {

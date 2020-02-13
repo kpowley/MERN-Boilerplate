@@ -1,5 +1,8 @@
+// Packages
 import React from 'react';
+import './profile.styles.scss';
 
+// Function
 const example = () => {
   fetch('/api/protected', {
     method: 'get',

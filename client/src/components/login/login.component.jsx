@@ -1,5 +1,6 @@
 // Packages
 import React, { Component } from 'react';
+import './login.styles.scss';
 
 // Setup component
 export default class Login extends Component {
