@@ -10,8 +10,7 @@ const User = require('../../models/User');
 // @req     'x-auth-token': localStorage.token
 // @res     {
 //          _id: "123456789",
-//          email: "user@email.com",
-//          password: "encryptedpassword"
+//          email: "user@email.com"
 //          }
 router.get('/', auth, async (req, res) => {
   try {

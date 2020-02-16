@@ -12,7 +12,7 @@ import Routes from './routes/Routes';
 class App extends Component {
   componentDidMount() {
     if (localStorage.token) {
-      fetch('/api/protected', {
+      fetch('/api/auth/check', {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',

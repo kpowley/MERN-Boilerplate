@@ -1,9 +1,10 @@
 // Packages
 import React, { Component } from 'react';
+import { WithContext } from '../../with-context/with-context.component';
 import './register.styles.scss';
 
 // Setup component
-export default class Register extends Component {
+class Register extends Component {
   // Declare state
   state = {
     email: '',
@@ -35,6 +36,7 @@ export default class Register extends Component {
           this.setState({ errors: res.errors });
         } else {
           localStorage.setItem('token', res.token);
+          this.props.value.actions.contextLogIn();
           alert('registration successful');
           this.setState({ email: '', password: '', errors: [] });
         }
@@ -76,3 +78,5 @@ export default class Register extends Component {
     );
   }
 }
+
+export default WithContext(Register);

@@ -14,8 +14,7 @@ const Routes = () => {
     <Fragment>
       <Switch>
         <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/profile' component={ProfilePage} />
-        {/* <PrivateRoute exact path='/profile' component={ProfilePage} /> */}
+        <PrivateRoute exact path='/profile' component={ProfilePage} />
         <Route
           path='/reset/:token'
           render={props => <ResetPage {...props} />}

@@ -1,9 +1,10 @@
 // Packages
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import './reset.styles.scss';
 
 // Setup component
-export default class ResetPassword extends Component {
+class ResetPassword extends Component {
   // Declare state
   state = {
     password: '',
@@ -29,8 +30,8 @@ export default class ResetPassword extends Component {
       if (res.errors) {
         this.setState({ errors: res.errors });
       } else {
-        alert('Password Updated');
-        this.setState({ email: '', errors: [] });
+        alert('Your Password Was Updated');
+        this.props.history.push('/login');
       }
     });
   };
@@ -60,3 +61,5 @@ export default class ResetPassword extends Component {
     );
   }
 }
+
+export default withRouter(ResetPassword);

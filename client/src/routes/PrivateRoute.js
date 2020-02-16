@@ -1,30 +1,22 @@
 // Packages
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { Consumer } from '../context';
+import { WithContext } from '../components/with-context/with-context.component';
 
 // Functions
-export default function PrivateRoute({
-  component: Component,
-  isAuthenticated,
-  ...rest
-}) {
+function PrivateRoute({ component: Component, value, ...rest }) {
   return (
-    <Consumer>
-      {({ isAuthenticated }) => {
-        return (
-          <Route
-            {...rest}
-            render={props =>
-              !isAuthenticated ? (
-                <Redirect to='/login' />
-              ) : (
-                <Component {...props} />
-              )
-            }
-          />
-        );
-      }}
-    </Consumer>
+    <Route
+      {...rest}
+      render={props =>
+        !value.isAuthenticated ? (
+          <Redirect to='/login' />
+        ) : (
+          <Component {...props} />
+        )
+      }
+    />
   );
 }
+
+export default WithContext(PrivateRoute);

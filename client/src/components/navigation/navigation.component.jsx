@@ -1,60 +1,40 @@
 // Packages
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Consumer } from '../../context';
+import { WithContext } from '../with-context/with-context.component';
 import './navigation.styles.scss';
 
 // Complonents
-import Logout from '../logout/logout.component';
+import Logout from '../auth/logout/logout.component';
 
 // Function
-export default function Navigation() {
+function Navigation({ value }) {
   const authLinks = (
-    <ul>
+    <div>
       You are logged in!
-      <li>
-        <Link to='/'>Home</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-      <li>
-        <Link to='/reset'>Reset</Link>
-      </li>
-      <li>
-        <Link to='/profile'>Profile</Link>
-      </li>
+      <Link to='/'>Home</Link>
+      <Link to='/login'>Login</Link>
+      <Link to='/reset'>Reset</Link>
+      <Link to='/profile'>Profile</Link>
       <Logout />
-    </ul>
+    </div>
   );
 
   const guestLinks = (
     <ul>
       Welcome Guest,
-      <li>
-        <Link to='/'>Home</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-      <li>
-        <Link to='/reset'>Reset</Link>
-      </li>
-      <li>
-        <Link to='/profile'>Profile</Link>
-      </li>
+      <Link to='/'>Home</Link>
+      <Link to='/login'>Login</Link>
+      <Link to='/reset'>Reset</Link>
+      <Link to='/profile'>Profile</Link>
     </ul>
   );
 
   return (
-    <Consumer>
-      {({ isAuthenticated }) => {
-        return (
-          <nav className='navbar bg-dark'>
-            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-          </nav>
-        );
-      }}
-    </Consumer>
+    <nav className='navbar bg-dark'>
+      <Fragment>{value.isAuthenticated ? authLinks : guestLinks}</Fragment>
+    </nav>
   );
 }
+
+export default WithContext(Navigation);

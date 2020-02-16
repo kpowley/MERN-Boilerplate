@@ -7,5 +7,6 @@ router.use('/', require('./auth'));
 router.use('/register', require('./register'));
 router.use('/reset', require('./reset'));
 router.use('/update', require('./update'));
+router.use('/check', require('./check'));
 
 module.exports = router;
