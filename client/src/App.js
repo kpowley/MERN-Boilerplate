@@ -1,22 +1,40 @@
 // Packages
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { WithContext } from './components/with-context/with-context.component';
 
 // Components
-import Navigatin from './components/navigation/navigation.component';
+import Navigation from './components/navigation/navigation.component';
 import Home from './pages/home/home.page';
 import Routes from './routes/Routes';
 
 // Function
-export default class App extends Component {
-  state = {
-    isAuthenticated: false
-  };
+class App extends Component {
+  componentDidMount() {
+    if (localStorage.token) {
+      fetch('/api/protected', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': localStorage.token
+        }
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res._id) {
+            this.props.value.actions.contextLogIn();
+          } else {
+            localStorage.removeItem('token');
+          }
+        });
+    }
+  }
+
   render() {
     return (
       <Router>
         <Fragment>
-          <Navigatin isAuthenticated={this.state.isAuthenticated} />
+          <Navigation />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route component={Routes} />
@@ -27,34 +45,4 @@ export default class App extends Component {
   }
 }
 
-// // Packages
-// import React, { Fragment } from 'react';
-
-// // Components
-// import Register from './components/register/register.component';
-// import Login from './components/login/login.component';
-// import Profile from './components/profile/profile.component';
-// import Hello from './components/Hello';
-// import Post from './components/crud/Post';
-// import GetAll from './components/crud/GetAll';
-// import GetOne from './components/crud/GetOne';
-// import Update from './components/crud/Update';
-// import Delete from './components/crud/Delete';
-
-// export default function App() {
-//   return (
-//     <Fragment>
-//       <Register />
-//       <Login />
-//       <Profile />
-//       <br />
-//       <br />
-//       <Hello />
-//       <Post />
-//       <GetAll />
-//       <GetOne />
-//       <Update />
-//       <Delete />
-//     </Fragment>
-//   );
-// }
+export default WithContext(App);

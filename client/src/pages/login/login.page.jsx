@@ -11,7 +11,7 @@ export default function LoginPage() {
   return (
     <Fragment>
       <Register />
-      <Login />
+      <Login test='test' />
     </Fragment>
   );
 }

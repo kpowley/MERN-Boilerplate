@@ -1,10 +1,11 @@
 // Packages
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Consumer } from '../../context';
 import './navigation.styles.scss';
 
 // Function
-export default function Navigation({ isAuthenticated }) {
+export default function Navigation() {
   const authLinks = (
     <ul>
       <li>
@@ -12,6 +13,9 @@ export default function Navigation({ isAuthenticated }) {
       </li>
       <li>
         <Link to='/login'>Logged in</Link>
+      </li>
+      <li>
+        <Link to='/profile'>Profile</Link>
       </li>
     </ul>
   );
@@ -28,8 +32,14 @@ export default function Navigation({ isAuthenticated }) {
   );
 
   return (
-    <nav className='navbar bg-dark'>
-      <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-    </nav>
+    <Consumer>
+      {({ isAuthenticated }) => {
+        return (
+          <nav className='navbar bg-dark'>
+            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+          </nav>
+        );
+      }}
+    </Consumer>
   );
 }

@@ -10,6 +10,11 @@ const User = require('../../models/User');
 // @route   POST api/register
 // @desc    Register a user
 // @access  Public
+// @req     {
+//          email: "example@email.com",
+//          password: "UserPassword"
+//          }
+// @res     localStorage.token
 router.post(
   '/',
   [

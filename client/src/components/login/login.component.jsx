@@ -1,5 +1,6 @@
 // Packages
 import React, { Component } from 'react';
+import { Consumer } from '../../context';
 import './login.styles.scss';
 
 // Setup component
@@ -15,9 +16,7 @@ export default class Login extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   // On submit event handler
-  handleSubmit(e) {
-    // Prevent default action
-    e.preventDefault();
+  handleSubmit = contextLogIn => {
     // Post one item API call
     fetch('/api/auth', {
       method: 'post',
@@ -35,44 +34,53 @@ export default class Login extends Component {
           this.setState({ errors: res.errors });
         } else {
           localStorage.setItem('token', res.token);
+          contextLogIn();
           alert('Login successful');
           this.setState({ email: '', password: '', errors: [] });
         }
       });
-  }
+  };
 
   render() {
     const { email, password, errors } = this.state;
     return (
-      <div>
-        <h2>Login:</h2>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          {errors.length > 0
-            ? errors.map(error => (
-                <p key={Math.floor(Math.random() * 1000)}>{error.msg}</p>
-              ))
-            : ''}
-          Email:
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={this.onChange}
-          />
-          <br />
-          Password:
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={password}
-            onChange={this.onChange}
-          />
-          <button type='submit'>Login</button>
-        </form>
-        <hr />
-      </div>
+      <Consumer>
+        {({ actions }) => {
+          return (
+            <div>
+              <h2>Login:</h2>
+              <div>
+                {errors.length > 0
+                  ? errors.map(error => (
+                      <p key={Math.floor(Math.random() * 1000)}>{error.msg}</p>
+                    ))
+                  : ''}
+                Email:
+                <input
+                  type='email'
+                  placeholder='Email Address'
+                  name='email'
+                  value={email}
+                  onChange={this.onChange}
+                />
+                <br />
+                Password:
+                <input
+                  type='password'
+                  placeholder='Password'
+                  name='password'
+                  value={password}
+                  onChange={this.onChange}
+                />
+                <button onClick={() => this.handleSubmit(actions.contextLogIn)}>
+                  Login
+                </button>
+              </div>
+              <hr />
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }

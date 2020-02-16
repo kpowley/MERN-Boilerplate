@@ -5,13 +5,17 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
-const auth = require('../../middleware/auth.middleware');
 
 const User = require('../../models/User');
 
 // @route   POST api/auth
 // @desc    Authenticate user & get token
 // @access  Public
+// @req     {
+//          email: "user@email.com",
+//          password: "userPassword"
+//          }
+// @res     localStorage.token
 router.post(
   '/',
   [

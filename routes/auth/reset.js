@@ -9,9 +9,11 @@ const auth = require('../../middleware/auth.middleware');
 
 const User = require('../../models/User');
 
-// @route   POST api/auth/passwordreset/email
+// @route   POST api/passwordreset/email
 // @desc    Submit email address for reset email
 // @access  Public
+// @req     {email: 'example@email.com'}
+// @res     'reset email sent'
 router.post(
   '/email',
   [check('email', 'Please include a valid email').isEmail()],
@@ -57,6 +59,9 @@ router.post(
 // @route   POST api/passwordreset
 // @desc    Use token from email to set new password
 // @access  Private
+// @req     'x-auth-token': localStorage.token
+//          { password: "NewPassword"}
+// @res     'Password updated'
 router.post(
   '/',
   auth,
