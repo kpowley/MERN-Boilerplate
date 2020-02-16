@@ -1,12 +1,12 @@
 // Packages
 import React, { Component } from 'react';
-import './reset-password.styles.scss';
+import './update-info.styles.scss';
 
 // Setup component
-export default class ResetPassword extends Component {
+export default class UpdateInfo extends Component {
   // Declare state
   state = {
-    password: '',
+    email: '',
     errors: []
   };
 
@@ -16,41 +16,44 @@ export default class ResetPassword extends Component {
   // On submit event handler
   handleSubmit = () => {
     // Post one item API call
-    fetch('/api/passwordreset', {
+    fetch('/api/update', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
-        'x-auth-token': this.props.token
+        'x-auth-token': localStorage.token
       },
       body: JSON.stringify({
-        password: this.state.password
+        updates: { email: this.state.email }
       })
-    }).then(res => {
-      if (res.errors) {
-        this.setState({ errors: res.errors });
-      } else {
-        alert('Password Updated');
-        this.setState({ email: '', errors: [] });
-      }
-    });
+    })
+      //.then(res => res.json())
+      .then(res => {
+        if (res.errors) {
+          this.setState({ errors: res.errors });
+        } else {
+          alert('Email Updated');
+          this.setState({ email: '', errors: [] });
+        }
+      });
   };
 
   render() {
-    const { password, errors } = this.state;
+    const { email, errors } = this.state;
     return (
       <div>
-        <h2>Reset Password:</h2>
+        <h2>Update info:</h2>
         <div>
           {errors.length > 0
             ? errors.map(error => (
                 <p key={Math.floor(Math.random() * 1000)}>{error.msg}</p>
               ))
             : ''}
-          New Password:
+          Email:
           <input
-            type='password'
-            name='password'
-            value={password}
+            type='email'
+            placeholder='Email Address'
+            name='email'
+            value={email}
             onChange={this.onChange}
           />
           <button onClick={() => this.handleSubmit()}>Update</button>

@@ -3,15 +3,17 @@ import React, { Fragment } from 'react';
 import './login.styles.scss';
 
 // Components
-import Register from '../../components/register/register.component';
-import Login from '../../components/login/login.component';
+import Login from '../../components/auth/login/login.component';
+import Register from '../../components/auth/register/register.component';
+import ResetRequest from '../../components/auth/reset-send/reset-send.component';
 
 // Function
 export default function LoginPage() {
   return (
     <Fragment>
+      <Login />
       <Register />
-      <Login test='test' />
+      <ResetRequest />
     </Fragment>
   );
 }

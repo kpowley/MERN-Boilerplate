@@ -1,6 +1,6 @@
 // Packages
 import React, { Component } from 'react';
-import './reset-password.styles.scss';
+import './reset.styles.scss';
 
 // Setup component
 export default class ResetPassword extends Component {
@@ -16,7 +16,7 @@ export default class ResetPassword extends Component {
   // On submit event handler
   handleSubmit = () => {
     // Post one item API call
-    fetch('/api/passwordreset', {
+    fetch('/api/auth/reset', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
