@@ -7,7 +7,7 @@ import Login from '../../components/auth/login/login.component';
 import Register from '../../components/auth/register/register.component';
 import ResetRequest from '../../components/auth/reset-send/reset-send.component';
 
-// Function
+// Component function
 export default function LoginPage() {
   return (
     <Fragment>

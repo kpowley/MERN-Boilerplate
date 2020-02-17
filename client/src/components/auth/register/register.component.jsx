@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { WithContext } from '../../with-context/with-context.component';
 import './register.styles.scss';
 
-// Setup component
+// Component class
 class Register extends Component {
   // Declare state
   state = {

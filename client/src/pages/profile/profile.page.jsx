@@ -6,7 +6,7 @@ import './profile.styles.scss';
 import UpdateProfile from '../../components/auth/update-profile/update-profile.component';
 import UpdatePassword from '../../components/auth/update-password/update-password.component';
 
-// Function
+// Component function
 export default function ProfilePage() {
   return (
     <Fragment>

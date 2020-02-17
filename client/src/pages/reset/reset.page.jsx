@@ -5,7 +5,7 @@ import './reset.styles.scss';
 // Components
 import Reset from '../../components/auth/reset/reset.component';
 
-// Function
+// Component function
 export default function ResetPasswordPage(props) {
   return (
     <Fragment>

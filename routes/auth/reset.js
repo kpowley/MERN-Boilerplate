@@ -7,9 +7,10 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth.middleware');
 
+// Mongoose model
 const User = require('../../models/User');
 
-// @route   POST api/passwordreset
+// @route   POST api/auth/reset/send
 // @desc    Submit email address for reset email
 // @access  Public
 // @req     {email: 'example@email.com'}
@@ -55,7 +56,7 @@ router.post(
   }
 );
 
-// @route   POST api/passwordreset
+// @route   POST api/auth/reset
 // @desc    Use token from email to set new password
 // @access  Private
 // @req     'x-auth-token': localStorage.token

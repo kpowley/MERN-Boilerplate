@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import './update-profile.styles.scss';
 
-// Setup component
+// Component class
 export default class UpdateInfo extends Component {
   // Declare state
   state = {

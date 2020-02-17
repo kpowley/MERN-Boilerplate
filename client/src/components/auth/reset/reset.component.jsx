@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import './reset.styles.scss';
 
-// Setup component
+// Component class
 class ResetPassword extends Component {
   // Declare state
   state = {
@@ -16,7 +16,6 @@ class ResetPassword extends Component {
 
   // On submit event handler
   handleSubmit = () => {
-    // Post one item API call
     fetch('/api/auth/reset', {
       method: 'post',
       headers: {

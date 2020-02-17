@@ -2,14 +2,13 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
-// const config = require('config');
 const { check } = require('express-validator');
 const auth = require('../../middleware/auth.middleware');
 
+// Mongoose model
 const User = require('../../models/User');
 
-// @route   POST api/update
+// @route   POST api/auth/update
 // @desc    Update user data
 // @access  Private
 // @req     'x-auth-token': localStorage.token
@@ -38,7 +37,7 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// @route   POST api/update/password
+// @route   POST api/auth/update/password
 // @desc    Update user data
 // @access  Private
 // @req     'x-auth-token': localStorage.token

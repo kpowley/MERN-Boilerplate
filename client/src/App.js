@@ -8,7 +8,7 @@ import Navigation from './components/navigation/navigation.component';
 import Home from './pages/home/home.page';
 import Routes from './routes/Routes';
 
-// Function
+// Component function
 class App extends Component {
   componentDidMount() {
     if (localStorage.token) {

@@ -11,12 +11,6 @@ app.use(express.json({ extended: false }));
 
 // Define routes
 app.use(express.static('client/build'));
-// app.use('/api/crud', require('./routes/crud/crud'));
-// app.use('/api/register', require('./routes/auth/register'));
-// app.use('/api/auth', require('./routes/auth/auth'));
-// app.use('/api/protected', require('./routes/auth/protected'));
-// app.use('/api/passwordreset', require('./routes/auth/reset'));
-// app.use('/api/update', require('./routes/auth/update'));
 app.use('/api/auth', require('./routes/auth/router'));
 
 // Listening port

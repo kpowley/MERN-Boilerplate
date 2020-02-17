@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { WithContext } from '../../with-context/with-context.component';
 import './login.styles.scss';
 
-// Setup component
+// Component class
 class Login extends Component {
   // Declare state
   state = {
@@ -17,7 +17,7 @@ class Login extends Component {
 
   // On submit event handler
   handleSubmit = () => {
-    // Post one item API call
+    // Post request to login
     fetch('/api/auth', {
       method: 'post',
       headers: {

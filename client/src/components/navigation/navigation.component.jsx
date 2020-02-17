@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { WithContext } from '../with-context/with-context.component';
 import './navigation.styles.scss';
 
-// Complonents
+// Components
 import Logout from '../auth/logout/logout.component';
 
-// Function
+// Component function
 function Navigation({ value }) {
+  // Logged-in links
   const authLinks = (
     <div>
       You are logged in!
@@ -20,6 +21,7 @@ function Navigation({ value }) {
     </div>
   );
 
+  // Logged-out links
   const guestLinks = (
     <ul>
       Welcome Guest,
@@ -31,7 +33,7 @@ function Navigation({ value }) {
   );
 
   return (
-    <nav className='navbar bg-dark'>
+    <nav>
       <Fragment>{value.isAuthenticated ? authLinks : guestLinks}</Fragment>
     </nav>
   );

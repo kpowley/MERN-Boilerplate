@@ -7,6 +7,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth.middleware');
 
+// Mongoose model
 const User = require('../../models/User');
 
 // @route   POST api/auth
@@ -71,12 +72,12 @@ router.post(
 
 // @route   GET api/protected
 // @desc    Verify token
-// @access  Public
+// @access  Private
 // @req     'x-auth-token': localStorage.token
 // @res     {
 //          _id: "123456789",
 //          email: "user@email.com",
-//          password: "encryptedpassword"
+//          date: "01/01/2000"
 //          }
 router.get('/', auth, async (req, res) => {
   try {

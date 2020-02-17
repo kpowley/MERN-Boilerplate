@@ -3,9 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from './context';
 
-// Import App
+// Components
 import App from './App';
 
+// Component function
 ReactDOM.render(
   <Provider>
     <App />

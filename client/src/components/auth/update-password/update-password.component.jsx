@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import './update-password.styles.scss';
 
-// Setup component
+// Component class
 export default class UpdatePassword extends Component {
   // Declare state
   state = {

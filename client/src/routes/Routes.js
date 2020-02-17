@@ -8,7 +8,7 @@ import LoginPage from '../pages/login/login.page';
 import ProfilePage from '../pages/profile/profile.page';
 import ResetPage from '../pages/reset/reset.page';
 
-// Function
+// Component function
 const Routes = () => {
   return (
     <Fragment>
